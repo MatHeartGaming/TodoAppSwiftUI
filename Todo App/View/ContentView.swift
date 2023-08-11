@@ -11,6 +11,7 @@ import CoreData
 struct ContentView: View {
     
     //MARK: - PROPERTIES
+    @EnvironmentObject var iconNames : IconNames
     @State private var showAddTodoView = false
     @State private var showSettings = false
     
@@ -51,6 +52,7 @@ struct ContentView: View {
                         } //: ADD BUTTON
                         .sheet(isPresented: $showSettings) {
                             SettingsView()
+                                .environmentObject(iconNames)
                         }
                     }
                     
@@ -134,5 +136,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .previewLayout(.sizeThatFits)
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .environmentObject(IconNames())
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     //MARK: - PROPERTIES
+    @EnvironmentObject var iconNames : IconNames
     @Environment(\.presentationMode) private var presentation
     
     //MARK: - BODY
@@ -18,6 +19,15 @@ struct SettingsView: View {
             VStack(alignment: .center, spacing: 0) {
                 
                 Form {
+                    
+                    //MARK: - SECTION 1
+                    Section {
+                        
+                    } header: {
+                        Text("Choose the app icon")
+                    }
+                    .padding(.vertical, 3)
+
                     
                     //MARK: - SECTION 3
                     Section {
@@ -78,5 +88,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(IconNames())
     }
 }
