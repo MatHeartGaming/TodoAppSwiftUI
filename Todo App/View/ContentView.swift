@@ -20,6 +20,10 @@ struct ContentView: View {
     
     @State private var animatingButton = false
     
+    //THEME
+    @EnvironmentObject private var theme : ThemeSettings
+    private let themes : [Theme] = themeData
+    
     
     //MARK: - BODY
     var body: some View {
@@ -28,11 +32,23 @@ struct ContentView: View {
                 List {
                     ForEach(todos, id: \.self) {todo in
                         HStack {
+                            Circle()
+                                .frame(width: 12, height: 12, alignment: .center)
+                                .foregroundColor(self.colorize(priority: todo.priority ?? "Normal"))
                             Text(todo.name ?? "Unknown")
+                                .fontWeight(.semibold)
                             
                             Spacer()
                             
                             Text(todo.priority ?? "Unknown")
+                                .font(.footnote)
+                                .foregroundColor(self.colorize(priority: todo.priority ?? "Normal"))
+                                .padding(3)
+                                .frame(minWidth: 62)
+                                .overlay(
+                                    Capsule()
+                                        .stroke(self.colorize(priority: todo.priority ?? "Normal"), lineWidth: 2)
+                                )
                         } //: HSTACK
                     } //: LOOP
                     .onDelete { indexes in
@@ -54,10 +70,12 @@ struct ContentView: View {
                             SettingsView()
                                 .environmentObject(iconNames)
                         }
+                        .tint(themes[theme.themeSettings].themeColor)
                     }
                     
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton()
+                            .tint(themes[theme.themeSettings].themeColor)
                     }
                     
                 } //: TOOLBAR
@@ -77,13 +95,13 @@ struct ContentView: View {
                     
                     Group {
                         Circle()
-                            .fill(.blue)
+                            .fill(themes[theme.themeSettings].themeColor)
                             .opacity(animatingButton ? 0.2 : 0)
                             .scaleEffect(animatingButton ? 1 : 0)
                             .frame(width: 68, height: 68, alignment: .center)
                         
                         Circle()
-                            .fill(.blue)
+                            .fill(themes[theme.themeSettings].themeColor)
                             .opacity(animatingButton ? 0.15 : 0)
                             .scaleEffect(animatingButton ? 1 : 0)
                             .frame(width: 88, height: 88, alignment: .center)
@@ -105,12 +123,14 @@ struct ContentView: View {
                             )
                             .frame(width: 48, height: 48)
                     })
+                    .tint(themes[theme.themeSettings].themeColor)
                 } //. ZSTACK
                     .padding(.bottom, 15)
                     .padding(.trailing, 15)
                 , alignment: .bottomTrailing)
             
         } //: NAVIGATION
+        .navigationViewStyle(.stack)
     }
     
     
@@ -128,6 +148,15 @@ struct ContentView: View {
         }
     }
     
+    private func colorize(priority : String) -> Color {
+        switch priority {
+        case "High": return .pink
+        case "Normal": return .green
+        case "Low": return .blue
+        default: return .gray
+        }
+    }
+    
 }
 
 //MARK: - PREVIEW
@@ -137,5 +166,6 @@ struct ContentView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
             .environmentObject(IconNames())
+            .environmentObject(ThemeSettings())
     }
 }

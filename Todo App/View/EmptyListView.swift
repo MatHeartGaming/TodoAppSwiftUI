@@ -22,6 +22,10 @@ struct EmptyListView: View {
         "Each night schedule for tomorrow",
     ]
     
+    //THEME
+    @EnvironmentObject private var theme : ThemeSettings
+    private let themes : [Theme] = themeData
+    
     private var chosenTip : String {
         return tips.randomElement()!
     }
@@ -35,14 +39,17 @@ struct EmptyListView: View {
         ZStack {
             VStack(alignment: .center, spacing: 20) {
                 Image(chosenImage)
+                    .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
                     .frame(minWidth: 256, idealWidth: 280, maxWidth: 360, minHeight: 256, idealHeight: 280, maxHeight: 360, alignment: .center)
+                    .foregroundColor(themes[theme.themeSettings].themeColor)
                     .layoutPriority(1)
                 
                 Text(chosenTip)
                     .layoutPriority(0.5)
                     .font(.system(.headline, design: .rounded))
+                    .foregroundColor(themes[theme.themeSettings].themeColor)
             } //: VSTACK
             .padding(.horizontal)
             .opacity(isAnimated ? 1 : 0.5)
@@ -65,5 +72,6 @@ struct EmptyListView_Previews: PreviewProvider {
     static var previews: some View {
         EmptyListView()
             .previewLayout(.sizeThatFits)
+            .environmentObject(ThemeSettings())
     }
 }

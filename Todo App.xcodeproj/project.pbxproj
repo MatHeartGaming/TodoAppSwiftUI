@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE949EA32A87A17300ECFB5C /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE949EA22A87A17300ECFB5C /* ThemeModel.swift */; };
+		FE949EA52A87A1C100ECFB5C /* ThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE949EA42A87A1C100ECFB5C /* ThemeData.swift */; };
+		FE949EA72A87A20600ECFB5C /* ThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE949EA62A87A20600ECFB5C /* ThemeSettings.swift */; };
 		FEA565D42A8679D7009BE258 /* Todo_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA565D32A8679D7009BE258 /* Todo_AppApp.swift */; };
 		FEA565D62A8679D7009BE258 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA565D52A8679D7009BE258 /* ContentView.swift */; };
 		FEA565D82A8679D8009BE258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEA565D72A8679D8009BE258 /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE949EA22A87A17300ECFB5C /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
+		FE949EA42A87A1C100ECFB5C /* ThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeData.swift; sourceTree = "<group>"; };
+		FE949EA62A87A20600ECFB5C /* ThemeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettings.swift; sourceTree = "<group>"; };
 		FEA565D02A8679D7009BE258 /* Todo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA565D32A8679D7009BE258 /* Todo_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo_AppApp.swift; sourceTree = "<group>"; };
 		FEA565D52A8679D7009BE258 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +75,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE949EA12A87A16C00ECFB5C /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				FE949EA22A87A17300ECFB5C /* ThemeModel.swift */,
+				FE949EA42A87A1C100ECFB5C /* ThemeData.swift */,
+				FE949EA62A87A20600ECFB5C /* ThemeSettings.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		FEA565C72A8679D7009BE258 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +104,7 @@
 		FEA565D22A8679D7009BE258 /* Todo App */ = {
 			isa = PBXGroup;
 			children = (
+				FE949EA12A87A16C00ECFB5C /* Theme */,
 				FEA5660B2A86A80F009BE258 /* Helpers */,
 				FEA565F82A86A4BB009BE258 /* Icons */,
 				FEA565EE2A868D88009BE258 /* Todo-App-Info.plist */,
@@ -235,8 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEA5660D2A86A820009BE258 /* ChangeIcon.swift in Sources */,
+				FE949EA52A87A1C100ECFB5C /* ThemeData.swift in Sources */,
 				FEA565D62A8679D7009BE258 /* ContentView.swift in Sources */,
 				FEA565F22A869B95009BE258 /* SettingsView.swift in Sources */,
+				FE949EA32A87A17300ECFB5C /* ThemeModel.swift in Sources */,
 				FEA565D42A8679D7009BE258 /* Todo_AppApp.swift in Sources */,
 				FEA565F02A868F50009BE258 /* EmptyListView.swift in Sources */,
 				FEA565F52A869E02009BE258 /* FormRowStaticVirew.swift in Sources */,
@@ -244,6 +263,7 @@
 				FEA565E02A8679D8009BE258 /* Todo_App.xcdatamodeld in Sources */,
 				FEA565ED2A868450009BE258 /* CustomAlertDialog.swift in Sources */,
 				FEA565E82A867A1C009BE258 /* AddTodoView.swift in Sources */,
+				FE949EA72A87A20600ECFB5C /* ThemeSettings.swift in Sources */,
 				FEA565EA2A868336009BE258 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,8 +388,10 @@
 		FEA565E42A8679D8009BE258 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon-Blue-Dark AppIcon-Blue-Light AppIcon-Blue AppIcon-Green-Light AppIcon-Green AppIcon-Pink-Dark AppIcon-Pink-Light AppIcon-Pink AppIcon";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Todo App/Preview Content\"";
@@ -398,8 +420,10 @@
 		FEA565E52A8679D8009BE258 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon-Blue-Dark AppIcon-Blue-Light AppIcon-Blue AppIcon-Green-Light AppIcon-Green AppIcon-Pink-Dark AppIcon-Pink-Light AppIcon-Pink AppIcon";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Todo App/Preview Content\"";

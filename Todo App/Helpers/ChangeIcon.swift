@@ -10,7 +10,7 @@ import UIKit
 
 class IconNames: ObservableObject {
     
-    var iconNames : [String?] = [nil]
+    /*var iconNames : [String?] = [nil]
     @Published var currentIndex = 0
     
     init() {
@@ -29,6 +29,17 @@ class IconNames: ObservableObject {
                 guard let icon = iconFiles.first else {return}
                 
                 iconNames.append(icon)
+            }
+        }
+    }*/
+    
+    static func changerIcon(with icon : String?)  {
+        print("Icon chosen")
+        UIApplication.shared.setAlternateIconName(icon) { error in
+            if error != nil {
+                print("Failed to request to update the app's icon: \(String(describing: error?.localizedDescription))")
+            } else {
+                print("Icon changed to \(String(describing: icon))")
             }
         }
     }

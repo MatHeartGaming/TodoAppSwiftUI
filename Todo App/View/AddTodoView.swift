@@ -21,6 +21,10 @@ struct AddTodoView: View {
     
     private let priorities = ["High", "Normal", "Low"]
     
+    //THEME
+    @EnvironmentObject private var theme : ThemeSettings
+    private let themes : [Theme] = themeData
+    
     //MARK: - BODY
     var body: some View {
         NavigationView {
@@ -69,7 +73,8 @@ struct AddTodoView: View {
                                 .padding()
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .background(
-                                    LinearGradient(colors: [.blue, .indigo], startPoint: .top, endPoint: .bottom)
+                                    themes[theme.themeSettings].themeColor
+                                    //LinearGradient(colors: [themes[theme.themeSettings].themeColor, .accentColor], startPoint: .top, endPoint: .bottom)
                                 )
                                 .cornerRadius(10)
                                 .foregroundColor(.white)
@@ -119,7 +124,8 @@ struct AddTodoView: View {
             } //: ZSTACK
             
         } //: NAVIGATION
-        
+        .tint(themes[theme.themeSettings].themeColor)
+        .navigationViewStyle(.stack)
     }
 }
 
@@ -129,6 +135,7 @@ struct AddTodoView_Previews: PreviewProvider {
     static var previews: some View {
         AddTodoView()
             .previewLayout(.sizeThatFits)
+            .environmentObject(ThemeSettings())
         //.padding()
     }
 }
